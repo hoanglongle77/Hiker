@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hiker Management App</string>
+    <string name="app_name">Hiker App</string>
     <string name="add_tab">Add</string>
     <string name="home_tab">Home</string>
     <string name="search_tab">Search</string>
@@ -18,6 +18,8 @@
     <string name="field_observation">Observation</string>
     <string name="field_observation_time">Time of Observation</string>
     <string name="field_comments">Additional Comments (Optional)</string>
+    <string name="parking_yes">Yes</string>
+    <string name="parking_no">No</string>
 
     <!-- Button Text -->
     <string name="button_save">Save</string>
