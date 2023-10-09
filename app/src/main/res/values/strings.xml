@@ -1,3 +1,42 @@
 <resources>
     <string name="app_name">Hiker Management App</string>
+    <string name="add_tab">Add</string>
+    <string name="home_tab">Home</string>
+    <string name="search_tab">Search</string>
+    <string name="title_add">Add new hike</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+
+    <!-- Field Names -->
+    <string name="field_name">Name of Hike</string>
+    <string name="field_location">Location</string>
+    <string name="field_date">Date of Hike</string>
+    <string name="field_parking">Parking Available</string>
+    <string name="field_length">Length of Hike</string>
+    <string name="field_difficulty">Level of Difficulty</string>
+    <string name="field_description">Description (Optional)</string>
+    <string name="field_observation">Observation</string>
+    <string name="field_observation_time">Time of Observation</string>
+    <string name="field_comments">Additional Comments (Optional)</string>
+
+    <!-- Button Text -->
+    <string name="button_save">Save</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_edit">Edit</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_confirm">Confirm</string>
+    <string name="button_back">Back</string>
+    <string name="button_search">Search</string>
+    <string name="button_reset">Reset Database</string>
+
+    <!-- Error Messages -->
+    <string name="error_required_field">This field is required.</string>
+    <string name="error_hike_details_incomplete">Hike details are incomplete. Please fill in all required fields.</string>
+    <string name="error_no_matching_hike">No matching hikes found.</string>
+
+    <!-- Success Messages -->
+    <string name="success_hike_saved">Hike details saved successfully.</string>
+    <string name="success_hike_deleted">Hike deleted successfully.</string>
+    <string name="success_observation_added">Observation added successfully.</string>
+
 </resources>
