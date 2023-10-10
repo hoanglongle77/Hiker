@@ -79,7 +79,7 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/round_input"
         android:gravity="center_vertical"
-        android:inputType="text"
+        android:inputType="date"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/field_date2"
+        android:id="@+id/field_length"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="200dp"
@@ -102,7 +102,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/parking_radio_group" />
 
     <TextView
         android:id="@+id/textView4"
@@ -149,6 +149,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="220dp"
         android:text="@string/field_parking"
+        android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/field_date" />
@@ -211,7 +212,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/parking_radio_group"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="200dp"
@@ -225,18 +226,18 @@
         <RadioButton
             android:id="@+id/radioButtonOption1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/parking_yes" />
 
         <RadioButton
             android:id="@+id/radioButtonOption2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/parking_no" />
     </RadioGroup>
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinner_level"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="200dp"
@@ -244,17 +245,17 @@
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/field_date2" />
+        app:layout_constraintTop_toBottomOf="@+id/field_length" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_add"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="250dp"
         android:layout_marginBottom="20dp"
-        android:text="Button"
+        android:text="@string/button_add"
         android:backgroundTint="@color/primary_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -262,14 +263,14 @@
         app:layout_constraintTop_toBottomOf="@+id/field_description" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/button_reset"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="250dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:text="Button"
+        android:text="@string/button_reset"
         android:backgroundTint="@color/disabled_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -26,10 +26,10 @@
     <string name="button_cancel">Cancel</string>
     <string name="button_edit">Edit</string>
     <string name="button_delete">Delete</string>
-    <string name="button_confirm">Confirm</string>
+    <string name="button_add">Add</string>
     <string name="button_back">Back</string>
     <string name="button_search">Search</string>
-    <string name="button_reset">Reset Database</string>
+    <string name="button_reset">Reset</string>
 
     <!-- Error Messages -->
     <string name="error_required_field">This field is required.</string>
@@ -40,5 +40,11 @@
     <string name="success_hike_saved">Hike details saved successfully.</string>
     <string name="success_hike_deleted">Hike deleted successfully.</string>
     <string name="success_observation_added">Observation added successfully.</string>
+
+    <string-array name="difficulty_levels">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
 
 </resources>
