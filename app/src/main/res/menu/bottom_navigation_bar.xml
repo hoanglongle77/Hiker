@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menu_add"
-        android:title="@string/add_tab" />
+        android:title="@string/add_tab"
+        android:icon="@mipmap/ic_hike_foreground"/>
     <item android:id="@+id/menu_home"
         android:title="@string/home_tab"
+        android:icon="@mipmap/ic_record_foreground"
         />
     <item android:id="@+id/menu_search"
         android:title="@string/search_tab"
+        android:icon="@mipmap/ic_search_foreground"
         />
 </menu>

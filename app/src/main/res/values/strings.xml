@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Hiker App</string>
     <string name="add_tab">Add</string>
-    <string name="home_tab">Home</string>
+    <string name="home_tab">Record</string>
     <string name="search_tab">Search</string>
     <string name="title_add">Add new hike</string>
     <string name="title_home">Home</string>
@@ -40,11 +40,19 @@
     <string name="success_hike_saved">Hike details saved successfully.</string>
     <string name="success_hike_deleted">Hike deleted successfully.</string>
     <string name="success_observation_added">Observation added successfully.</string>
+    <string name="name_hint">Son Dong</string>
+    <string name="length_hint">10</string>
+    <string name="date_hint">7/7/2023</string>
+    <string name="location_hint">Quang Binh</string>
+    <string name="description_hint">Discover Son Dong</string>
 
     <string-array name="difficulty_levels">
         <item>Easy</item>
         <item>Medium</item>
         <item>Hard</item>
     </string-array>
+
+
+
 
 </resources>

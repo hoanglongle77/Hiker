@@ -22,6 +22,7 @@ import android.widget.Spinner;
 
 import com.example.hikermanagementapp.R;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -151,6 +152,18 @@ public class AddFragment extends Fragment {
         hikeDetails.add(6, description);
 
         return hikeDetails;
+    }
+
+    public boolean formValidate(){
+        ArrayList<String> valueToCheck = getInputValues();
+        for (int i = 0; i < valueToCheck.size(); i++) {
+            // Access each element using myList.get(i)
+            String field = valueToCheck.get(i);
+            if(field.isEmpty()){
+                return false;
+            }
+        }
+        return true;
     }
 
 
