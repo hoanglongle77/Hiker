@@ -1,5 +1,6 @@
 package com.example.hikermanagementapp.Fragments;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +22,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import com.example.hikermanagementapp.Database.HikerAppDatabase;
+import com.example.hikermanagementapp.Models.Hike;
 import com.example.hikermanagementapp.R;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -34,12 +37,19 @@ public class AddFragment extends Fragment {
     RadioGroup parkingRadioGroup;
     String parkingValue;
     Button btnAdd,btnReset;
+    HikerAppDatabase myAppDatabase;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add, container, false);
+
+        // Initialize database
+        myAppDatabase = Room.databaseBuilder(requireContext(), HikerAppDatabase.class, "hiker_app_db")
+                .allowMainThreadQueries() // For simplicity, don't use this in production
+                .build();
+
 
         // Initialize radio group for parking option
         parkingRadioGroup = view.findViewById(R.id.parking_radio_group);
@@ -66,6 +76,14 @@ public class AddFragment extends Fragment {
 
         // Button add event
         btnAdd = view.findViewById(R.id.button_add);
+        btnAdd.setOnClickListener(v -> {
+            if (formValidate()) {
+                insertHike();
+                showAlertDialog("Success", "New hike is saved");
+            } else {
+                showAlertDialog("Error", "Please enter all fields");
+            }
+        });
 
         // Button reset event
         btnReset = view.findViewById(R.id.button_reset);
@@ -84,7 +102,7 @@ public class AddFragment extends Fragment {
             int year = d.getYear();
             int month = d.getMonthValue();
             int day = d.getDayOfMonth();
-            return new DatePickerDialog(getActivity(), this, year, --month, day);
+            return new DatePickerDialog(requireContext(), this, year, --month, day);
         }
 
         @Override
@@ -125,8 +143,35 @@ public class AddFragment extends Fragment {
         inputDescription.setText("");
     }
 
+    public boolean formValidate(){
+        ArrayList<String> valueToCheck = getAllInputValues();
+        for (int i = 0; i < valueToCheck.size(); i++) {
+            // Access each element using myList.get(i)
+            String field = valueToCheck.get(i);
+            if(field.isEmpty()){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    // Method to get value of parking radio button
+    public String getParkingOptionValues() {
+        return parkingValue;
+    }
+
+    // Method to get value of level spinner
+    public String getLevelValues() {
+        spinnerLevel = requireView().findViewById(R.id.spinner_level);
+        if (spinnerLevel != null && spinnerLevel.getSelectedItem() != null) {
+            return spinnerLevel.getSelectedItem().toString();
+        }
+        return null;
+    }
+
     // Method to get values from all input fields
-    public ArrayList<String> getInputValues() {
+    public ArrayList<String> getAllInputValues() {
         ArrayList<String> hikeDetails = new ArrayList<>();
 
         inputName = requireView().findViewById(R.id.field_name);
@@ -154,31 +199,32 @@ public class AddFragment extends Fragment {
         return hikeDetails;
     }
 
-    public boolean formValidate(){
-        ArrayList<String> valueToCheck = getInputValues();
-        for (int i = 0; i < valueToCheck.size(); i++) {
-            // Access each element using myList.get(i)
-            String field = valueToCheck.get(i);
-            if(field.isEmpty()){
-                return false;
-            }
-        }
-        return true;
+    // Method to insert new hike
+    public void insertHike(){
+        ArrayList<String> hikeDetails = getAllInputValues();
+        Hike newHike = new Hike();
+        newHike.setName(hikeDetails.get(0));
+        newHike.setLocation(hikeDetails.get(1));
+        newHike.setDate(hikeDetails.get(2));
+        newHike.setParkingAvailable(hikeDetails.get(3));
+        newHike.setLength(Integer.parseInt(hikeDetails.get(4)));
+        newHike.setDifficulty(hikeDetails.get(5));
+        newHike.setDescription(hikeDetails.get(6));
+        long hikeId = myAppDatabase.hikeDao().insertHike(newHike);
     }
 
-
-    // Method to get value of parking radio button
-    public String getParkingOptionValues() {
-        return parkingValue;
+    // Show alert dialog
+    private void showAlertDialog(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", (dialog, which) -> {
+                    // Do something when the "OK" button is clicked
+                    resetAllFields(); // Close the dialog
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
-    // Method to get value of level spinner
-    public String getLevelValues() {
-        spinnerLevel = requireView().findViewById(R.id.spinner_level);
-        if (spinnerLevel != null && spinnerLevel.getSelectedItem() != null) {
-            return spinnerLevel.getSelectedItem().toString();
-        }
-        return null;
-    }
 
 }
