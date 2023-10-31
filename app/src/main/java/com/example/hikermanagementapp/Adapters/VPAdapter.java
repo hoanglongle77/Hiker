@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.hikermanagementapp.Fragments.AddFragment;
-import com.example.hikermanagementapp.Fragments.HomeFragment;
+import com.example.hikermanagementapp.Fragments.DetailsFragment;
 import com.example.hikermanagementapp.Fragments.SearchFragment;
 
 public class VPAdapter extends FragmentStateAdapter {
@@ -19,7 +19,7 @@ public class VPAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch(position){
             case 1:
-                return new HomeFragment();
+                return new DetailsFragment();
             case 2:
                 return new SearchFragment();
             case 0:

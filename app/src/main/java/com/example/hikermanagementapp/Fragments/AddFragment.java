@@ -25,7 +25,6 @@ import android.widget.Spinner;
 import com.example.hikermanagementapp.Database.HikerAppDatabase;
 import com.example.hikermanagementapp.Models.Hike;
 import com.example.hikermanagementapp.R;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ public class AddFragment extends Fragment {
     ArrayAdapter<String> spinnerAdapter;
     RadioGroup parkingRadioGroup;
     String parkingValue;
-    Button btnAdd,btnReset;
+    Button btnAdd;
     HikerAppDatabase myAppDatabase;
 
     @Override
@@ -46,7 +45,7 @@ public class AddFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add, container, false);
 
         // Initialize database
-        myAppDatabase = Room.databaseBuilder(requireContext(), HikerAppDatabase.class, "hiker_app_db")
+        myAppDatabase = Room.databaseBuilder(requireContext(), HikerAppDatabase.class, "hike_app_db")
                 .allowMainThreadQueries() // For simplicity, don't use this in production
                 .build();
 
@@ -78,16 +77,12 @@ public class AddFragment extends Fragment {
         btnAdd = view.findViewById(R.id.button_add);
         btnAdd.setOnClickListener(v -> {
             if (formValidate()) {
-                insertHike();
+                insertNewHike();
                 showAlertDialog("Success", "New hike is saved");
             } else {
                 showAlertDialog("Error", "Please enter all fields");
             }
         });
-
-        // Button reset event
-        btnReset = view.findViewById(R.id.button_reset);
-        btnReset.setOnClickListener(v -> resetAllFields());
 
         return view;
     }
@@ -200,16 +195,16 @@ public class AddFragment extends Fragment {
     }
 
     // Method to insert new hike
-    public void insertHike(){
+    public void insertNewHike(){
         ArrayList<String> hikeDetails = getAllInputValues();
         Hike newHike = new Hike();
-        newHike.setName(hikeDetails.get(0));
-        newHike.setLocation(hikeDetails.get(1));
-        newHike.setDate(hikeDetails.get(2));
-        newHike.setParkingAvailable(hikeDetails.get(3));
-        newHike.setLength(Integer.parseInt(hikeDetails.get(4)));
-        newHike.setDifficulty(hikeDetails.get(5));
-        newHike.setDescription(hikeDetails.get(6));
+        newHike.name= hikeDetails.get(0);
+        newHike.location = hikeDetails.get(1);
+        newHike.date = hikeDetails.get(2);
+        newHike.parkingAvailable = hikeDetails.get(3);
+        newHike.length = Integer.parseInt(hikeDetails.get(4));
+        newHike.difficulty = hikeDetails.get(5);
+        newHike.description = hikeDetails.get(6);
         long hikeId = myAppDatabase.hikeDao().insertHike(newHike);
     }
 

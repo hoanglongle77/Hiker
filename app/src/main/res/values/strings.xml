@@ -8,6 +8,7 @@
     <string name="title_search">Search</string>
 
     <!-- Field Names -->
+    <string name="image_description">Hike Icon</string>
     <string name="field_name">Name of Hike</string>
     <string name="field_location">Location</string>
     <string name="field_date">Date of Hike</string>
@@ -20,6 +21,8 @@
     <string name="field_comments">Additional Comments (Optional)</string>
     <string name="parking_yes">Yes</string>
     <string name="parking_no">No</string>
+    <string name="empty">""</string>
+
 
     <!-- Button Text -->
     <string name="button_save">Save</string>
@@ -51,8 +54,6 @@
         <item>Medium</item>
         <item>Hard</item>
     </string-array>
-
-
-
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

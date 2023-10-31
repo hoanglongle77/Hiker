@@ -5,22 +5,9 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".Fragments.AddFragment">
 
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="100dp"
-        android:gravity="center"
-        android:text="@string/title_add"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/field_name"
@@ -73,14 +60,14 @@
         android:background="@drawable/round_input"
         android:gravity="center_vertical"
         android:hint="@string/date_hint"
-        android:inputType="date"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:focusableInTouchMode="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label_date"
-        tools:ignore="VisualLintTextFieldSize" />
+        tools:ignore="TextFields,VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/field_length"
@@ -107,13 +94,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="130dp"
         android:text="@string/field_name"
+        android:textColor="@color/tertiary_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/label_location"
@@ -123,6 +111,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="150dp"
         android:text="@string/field_location"
+        android:textColor="@color/tertiary_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/field_name" />
@@ -135,6 +124,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="150dp"
         android:text="@string/field_date"
+        android:textColor="@color/tertiary_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/field_location" />
@@ -148,6 +138,7 @@
         android:layout_marginEnd="10dp"
         android:gravity="center_vertical"
         android:text="@string/field_parking"
+        android:textColor="@color/tertiary_text"
         app:layout_constraintEnd_toStartOf="@+id/parking_radio_group"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/field_date" />
@@ -161,6 +152,7 @@
         android:layout_marginEnd="10dp"
         android:gravity="center_vertical"
         android:text="@string/field_length"
+        android:textColor="@color/tertiary_text"
         app:layout_constraintEnd_toStartOf="@+id/field_length"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label_parking" />
@@ -174,6 +166,7 @@
         android:layout_marginEnd="10dp"
         android:gravity="center_vertical"
         android:text="@string/field_difficulty"
+        android:textColor="@color/tertiary_text"
         app:layout_constraintEnd_toStartOf="@+id/spinner_level"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label_length" />
@@ -186,6 +179,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="220dp"
         android:text="@string/field_description"
+        android:textColor="@color/tertiary_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label_level" />
@@ -230,13 +224,17 @@
             android:id="@+id/radioButtonOption1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/parking_yes" />
+            android:text="@string/parking_yes"
+            android:textColor="@color/tertiary_text"
+            android:buttonTint="@color/tertiary_text"/>
 
         <RadioButton
             android:id="@+id/radioButtonOption2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/parking_no" />
+            android:text="@string/parking_no"
+            android:textColor="@color/tertiary_text"
+            android:buttonTint="@color/tertiary_text"/>
     </RadioGroup>
 
     <Spinner
@@ -247,6 +245,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:labelFor="@+id/label_level"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/label_level"
         app:layout_constraintTop_toBottomOf="@+id/field_length" />
@@ -254,35 +253,18 @@
     <Button
         android:id="@+id/button_add"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/primary_button"
+        android:backgroundTint="@color/secondary_button"
         android:text="@string/button_add"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_reset"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/field_description"
-        tools:ignore="VisualLintButtonSize" />
-
-    <Button
-        android:id="@+id/button_reset"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/disabled_button"
-        android:text="@string/button_reset"
+        android:textSize="20sp"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_add"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/field_description"
         tools:ignore="VisualLintButtonSize" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
